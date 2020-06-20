@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin');
 
 const projectConfig = require('../project.config');
 const resolve = require('./utils/resolve');
@@ -23,8 +25,7 @@ module.exports = {
     plugins: []
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
         loader: 'vue-loader'
       },

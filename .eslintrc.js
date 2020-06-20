@@ -31,6 +31,7 @@ module.exports = {
         'no-underscore-dangle': 0,
         'no-plusplus': 0,
         "no-param-reassign": 0,
+        "no-lonely-if": 0,
         'func-names': 0,
         'max-len': [
             'error',

@@ -1,10 +1,9 @@
 {
-    "presets": [
-      "@vue/babel-preset-jsx",
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-syntax-dynamic-import"
-    ]
-  }
-  
+  "presets": [
+    "@vue/babel-preset-jsx",
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import"
+  ]
+}

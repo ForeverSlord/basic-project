@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Antd from 'ant-design-vue';
 
-import App from './App.vue';
+import App from './App';
 import router from './router';
 import store from './store';
 import { http_post, http_post_refund, http_get_login } from './http';
@@ -33,6 +33,11 @@ Vue.prototype.openNotificationWithIcon = function (type, title, msg) {
         description: msg
       });
       break;
+    default:
+      Vue.$notification.warning({
+        message: title,
+        description: msg
+      });
   }
 };
 

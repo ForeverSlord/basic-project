@@ -67,8 +67,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    const hasAuthority = store.state.pages.some((item) => item.path === to.path);
-    console.log(hasAuthority);
+    // const hasAuthority = store.state.pages.some((item) => item.path === to.path);
+    // console.log(hasAuthority);
     if (store.state.token !== null) {
       next();
     } else {
