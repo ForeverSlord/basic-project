@@ -116,74 +116,69 @@ export default {
 </script>
 
 <style lang="stylus">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+#app
+  color #2c3e50
+  text-align center
+  font-family Avenir,Helvetica,Arial,sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
 
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff;
-}
+#components-layout-demo-custom-trigger .trigger
+  padding 0 24px
+  font-size 18px
+  line-height 64px
+  cursor pointer
+  transition color .3s
 
-#components-layout-demo-custom-trigger .logo {
-  height: 52px;
-  margin: 16px;
-  img {
-    height: 100%;
-  }
-}
-.ant-layout.ant-layout-has-sider {
-  overflow: hidden;
-}
-.ant-layout-sider {
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-}
-.ant-layout-sider-children {
-  height: 100vh;
-}
-.ant-menu.ant-menu-inline.ant-menu-root.ant-menu-dark {
-  text-align: left;
-}
-.ant-layout-header {
-  text-align: left;
-}
-.ant-layout-content {
-  min-height: 89vh;
-  min-width: 1080px;
-}
-#layout-right {
-  transition: all ease-in-out 150ms;
-  overflow-x: auto;
-}
-.login-info {
-  float: right;
-  margin-right: 20px;
-}
+#components-layout-demo-custom-trigger .trigger:hover
+  color #1890ff
 
-*::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    // background-color: #d9d9d9;
-    border-radius: 4px;
-}
+#components-layout-demo-custom-trigger .logo
+  margin 16px
+  height 52px
 
-*::-webkit-scrollbar-thumb {
-    border-radius: 7px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #ccc;
-}
+  img
+    height 100%
+
+.ant-layout.ant-layout-has-sider
+  overflow hidden
+
+.ant-layout-sider
+  position fixed
+  top 0
+  left 0
+  overflow-y auto
+
+.ant-layout-sider-children
+  height 100vh
+
+.ant-menu.ant-menu-inline.ant-menu-root.ant-menu-dark
+  text-align left
+
+.ant-layout-header
+  text-align left
+
+.ant-layout-content
+  min-width 1080px
+  min-height 89vh
+
+#layout-right
+  overflow-x auto
+  transition all ease-in-out 150ms
+
+.login-info
+  float right
+  margin-right 20px
+
+*::-webkit-scrollbar
+  width 8px
+  height 8px
+  // background-color: #d9d9d9;
+  border-radius 4px
+  -webkit-box-shadow inset 0 0 6px rgba(0,0,0,.3)
+
+*::-webkit-scrollbar-thumb
+  border-radius 7px
+  background-color #ccc
+  -webkit-box-shadow inset 0 0 6px rgba(0,0,0,.3)
 </style>

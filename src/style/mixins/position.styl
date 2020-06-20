@@ -1,0 +1,40 @@
+absolute_level_middle()
+  position absolute
+  left 50%
+  transform translate3d(-50%,0,0)
+
+absolute_vertical_middle()
+  position absolute
+  top 50%
+  transform translate3d(0,-50%,0)
+
+absolute_both_middle()
+  absolute_level_middle()
+  absolute_vertical_middle()
+  transform translate3d(-50%,-50%,0)
+
+absolute_position(left = 0,top = 0)
+  position absolute
+  top top
+  left left
+
+flex_both_middle()
+  flex_justify_middle()
+  flex_align_middle()
+
+flex_align_middle()
+  display flex
+  align-items center
+
+flex_justify_middle()
+  display flex
+  justify-content center
+
+flex_column_spacebetween()
+  display flex
+  flex-direction column
+  justify-content space-between
+
+flex_row_spacebetween()
+  display flex
+  justify-content space-between

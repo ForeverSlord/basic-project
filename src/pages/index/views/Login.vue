@@ -68,18 +68,19 @@ export default {
 </script>
 >
 <style lang="stylus">
-.login {
-  height: 100vh;
-  width: 100%;
-  background: url("../../../assets/havaii.png") center/cover no-repeat;
-  z-index: 1;
-  position: relative;
-  #login_container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-}
+@import '~style/helper'
+
+.login
+  position relative
+  z-index 1
+  width 100%
+  height 100vh
+  background url('../../../assets/havaii.png') center / cover no-repeat
+
+  #login_container
+    position absolute
+    top 50%
+    left 50%
+    z-index 2
+    transform translate(-50%,-50%)
 </style>

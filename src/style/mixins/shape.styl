@@ -1,0 +1,15 @@
+circle(radius)
+  width radius
+  height radius
+  border-radius 50%
+triangle(size, color, direction = 'top')
+  position absolute
+  width 0
+  height 0
+  border-right size solid transparent
+  border-left size solid transparent
+  content ''
+  if direction is 'top'
+    border-bottom size solid color
+  else
+    border-top size solid color
