@@ -1,50 +1,45 @@
 <template>
   <a-config-provider :locale="locale">
     <div id="app">
-      <a-layout id="components-layout-demo-custom-trigger" v-if="$store.state.token!==null">
-      <!-- <a-layout id="components-layout-demo-custom-trigger" > -->
+      <a-layout id="components-layout-demo-custom-trigger" v-if="$store.state.token !== null">
+        <!-- <a-layout id="components-layout-demo-custom-trigger" > -->
         <a-layout-sider :trigger="null" collapsible v-model="collapsed">
           <div class="logo">
             <!-- <img v-if="!collapsed" src="@/assets/logo.png" alt />
             <img v-if="collapsed" src="@/assets/logo2.png" alt /> -->
             <img src="~@/assets/logo2.png" alt />
           </div>
-          
-          <a-menu
-            :selectedKeys="$store.state.selectedKeys"
-            :default-open-keys="['2']"
-            mode="inline"
-            theme="dark"
-            :inline-collapsed="collapsed"
-          >
+
+          <a-menu :selectedKeys="$store.state.selectedKeys" :default-open-keys="['2']" mode="inline" theme="dark" :inline-collapsed="collapsed">
             <template v-for="item in list">
-              <a-menu-item v-if="!item.children" :key="item.key" @click="skip(item.key,item.path)">
+              <a-menu-item v-if="!item.children" :key="item.key" @click="skip(item.key, item.path)">
                 <a-icon :type="item.icon" />
                 <span>{{ item.title }}</span>
               </a-menu-item>
               <sub-menu v-else :key="item.key" :menu-info="item" />
             </template>
           </a-menu>
-
         </a-layout-sider>
         <!-- <a-layout id="layout-right" :style="{marginLeft:layout_right_margin_left,}"> -->
-        <a-layout id="layout-right" >
-          <a-layout-header style="background: #fff; padding: 0">
-            <a-icon
-              class="trigger"
-              :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-              @click="()=> collapsed = !collapsed"
-            />
+        <a-layout id="layout-right">
+          <a-layout-header style="background: #fff; padding: 0;">
+            <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="() => (collapsed = !collapsed)" />
             <div class="login-info">
-              <span style="margin-right:20px;">欢迎！{{$store.state.userName}}</span>
+              <span style="margin-right: 20px;"> 欢迎！{{ $store.state.userName }} </span>
               <a-button @click="doLogout">登出</a-button>
             </div>
           </a-layout-header>
           <a-layout-content
-            :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '88.5vh',textAlign:'left' }"
+            :style="{
+              margin: '24px 16px',
+              padding: '24px',
+              background: '#fff',
+              minHeight: '88.5vh',
+              textAlign: 'left'
+            }"
           >
-            <keep-alive >
-              <router-view  v-if="$route.meta.keepAlive" />
+            <keep-alive>
+              <router-view v-if="$route.meta.keepAlive" />
             </keep-alive>
             <router-view v-if="!$route.meta.keepAlive"></router-view>
           </a-layout-content>
@@ -56,69 +51,67 @@
 </template>
 
 <script>
-import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN";
-import moment from "moment";
-import "moment/locale/zh-cn";
+import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 
-moment.locale("zh-cn");
+import SubMenu from 'component/SubMenu';
+import { getMenus } from 'utils/router-helper';
+import { routes } from './router/index';
 
-import SubMenu from 'component/SubMenu'
-import { routes } from './router'
-import { getMenus } from 'utils/router-helper'
+moment.locale('zh-cn');
 
 export default {
-  components:{ SubMenu },
+  components: { SubMenu },
   data() {
     return {
       locale: zh_CN,
       collapsed: false,
-      layout_right_margin_left: "200px",
+      layout_right_margin_left: '200px',
       list: getMenus(routes)
     };
   },
   methods: {
     skip(key, path) {
       // if (this.$store.state.selectedKeys[0] === key) {
-        
-      if (this.$route.name === key) {
-        return;
-      } else {
-        this.$store.commit("changeSelectedKeys", [key]);
-        this.$router.push({ path: path });
+
+      if (this.$route.name !== key) {
+        this.$store.commit('changeSelectedKeys', [key]);
+        this.$router.push({ path });
       }
     },
     doLogout() {
-      let _this = this;
+      const _this = this;
       this.$confirm({
-        title: "退出登陆",
-        content: "确认要退出登录吗？",
+        title: '退出登陆',
+        content: '确认要退出登录吗？',
         onOk() {
-          _this.$store.commit("changeUser", {
-            id: "",
+          _this.$store.commit('changeUser', {
+            id: '',
             token: null,
-            name: ""
+            name: ''
           });
-          _this.$router.push({ path: "/login" });
+          _this.$router.push({ path: '/login' });
         }
       });
     }
   },
   watch: {
-    collapsed: function(newVal) {
+    collapsed(newVal) {
       if (newVal) {
-        this.layout_right_margin_left = "80px";
+        this.layout_right_margin_left = '80px';
       } else {
-        this.layout_right_margin_left = "200px";
+        this.layout_right_margin_left = '200px';
       }
     },
-    $route: function(newPath) {
-      let key = newPath.meta.key;
+    $route(newPath) {
+      const { key } = newPath.meta;
       if (key !== undefined) {
         this.$store.state.selectedKeys = [key.toString()];
       }
     }
   },
-  mounted(){}
+  mounted() {}
 };
 </script>
 

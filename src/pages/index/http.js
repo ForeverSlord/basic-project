@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios';
 // 基本接口
 const http = axios.create({
   baseURL: VUE_APP_BMW,
@@ -6,19 +6,18 @@ const http = axios.create({
   headers: {
     'Content-Type': 'application/json'
   },
-  transformRequest: [function (data) {
-    let data_json = JSON.stringify(data);
-    return data_json;
-  }],
+  transformRequest: [
+    function (data) {
+      const data_json = JSON.stringify(data);
+      return data_json;
+    }
+  ]
 });
 
-http.interceptors.response.use(function (response) {
-  // 对响应数据做点什么
-  return response.data;
-}, function (error) {
-  // 对响应错误做点什么
-  return Promise.reject(error);
-});
+http.interceptors.response.use(
+  (response) => response.data,
+  (error) => Promise.reject(error)
+);
 
 // 退款的接口
 const http_refund = axios.create({
@@ -27,19 +26,18 @@ const http_refund = axios.create({
   headers: {
     'Content-Type': 'application/json'
   },
-  transformRequest: [function (data) {
-    let data_json = JSON.stringify(data);
-    return data_json;
-  }],
+  transformRequest: [
+    function (data) {
+      const data_json = JSON.stringify(data);
+      return data_json;
+    }
+  ]
 });
 
-http_refund.interceptors.response.use(function (response) {
-  // 对响应数据做点什么
-  return response.data;
-}, function (error) {
-  // 对响应错误做点什么
-  return Promise.reject(error);
-});
+http_refund.interceptors.response.use(
+  (response) => response.data,
+  (error) => Promise.reject(error)
+);
 
 // 登陆的接口
 const http_login = axios.create({
@@ -48,25 +46,21 @@ const http_login = axios.create({
   headers: {
     'Content-Type': 'application/json'
   },
-  transformRequest: [function (data) {
-    let data_json = JSON.stringify(data);
-    return data_json;
-  }],
+  transformRequest: [
+    function (data) {
+      const data_json = JSON.stringify(data);
+      return data_json;
+    }
+  ]
 });
 
-http_login.interceptors.response.use(function (response) {
-  // 对响应数据做点什么
-  return response.data;
-}, function (error) {
-  // 对响应错误做点什么
-  return Promise.reject(error);
-});
+http_login.interceptors.response.use(
+  (response) => response.data,
+  (error) => Promise.reject(error)
+);
 
 // 暴露http实例，在上传imgselect中使用
-export {
-  http,
-  http_login
-}
+export { http, http_login };
 
 // post
 export function http_post(url, data = {}) {
