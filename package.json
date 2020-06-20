@@ -6,8 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_DEV=development SERVER_DEV=development webpack-dev-server --config ./build/webpack.dev.js",
     "prod": "cross-env NODE_DEV=development SERVER_DEV=production webpack-dev-server --config ./build/webpack.dev.js",
-    "build-prod": "cross-env NODE_DEV=production SERVER_DEV=production webpack --config ./build/webpack.prod.js",
     "build-test": "cross-env NODE_DEV=production SERVER_DEV=development webpack --config ./build/webpack.prod.js",
+    "build-prod": "cross-env NODE_DEV=production SERVER_DEV=production webpack --config ./build/webpack.prod.js",
     "deploy-test": "npm run build-test && cross-env NODE_DEV=development node ./build/deploy",
     "deploy-prod": "npm run build-prod && cross-env NODE_DEV=production node ./build/deploy"
   },
@@ -49,7 +49,6 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "terser-webpack-plugin": "^3.0.6",
-    "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^4.1.0",
     "vue-eslint-parser": "^7.1.0",
     "vue-html-loader": "^1.2.4",
